@@ -1,7 +1,6 @@
 import json
 import psycopg2
 # psygopg2 is used for the connection to the postgres-DB here
-# this package might be the biggest reason to use some other DB when using Python
 
 # NOTE: for naming variables/functions I use CamelCase in general
 #       but when there is a direct relation to the DB I use snake_case
@@ -47,8 +46,7 @@ def respond(statusCode, data):
 
     }
 
-# converts the return of a db-query into a company-object which can be send back to the client. 
-# This is needed because otherwise the object-keys would be lost. Also matches the 'companies'-table schema
+# converts the return of a db-query into a company-object which can be send back to the client.
 def convertToCompany(data):
     return {
         'id': data[0],
@@ -64,7 +62,7 @@ def convertToCompany(data):
 #
 
 # lambda handler
-# Here are the routes defined by several if-statements
+# Here are the routes defined, separated by several if-statements
 def lambda_handler(event, context):
     conn = None
     try:
